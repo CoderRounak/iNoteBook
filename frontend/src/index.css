@@ -35,3 +35,8 @@ nav .collapse .nav-item .nav-link.act
 {
     font-weight: 800;
 }
+
+/* icons */
+i{
+  cursor: pointer;
+}

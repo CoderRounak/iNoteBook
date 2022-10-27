@@ -1,16 +1,14 @@
-import React,{useEffect, useState} from "react";
+import React from "react";
 import { Link, useLocation} from "react-router-dom";
 
 
 
 const Navbar = () => {
 
-  const [isactive, setIsActive] = useState("act")
+  const isactive="act";
 
   let location=useLocation();
-  useEffect(() => {
-    console.log(location.pathname);
-    }, [location])
+  
     
 
   
