@@ -18,7 +18,6 @@ const NoteState = (props) => {
       },
     });
     const json = await response.json();
-    console.log(json);
     setNotes(json);
   };
   const createNote = async (title, description, tag) => {
@@ -60,6 +59,8 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }),
     });
+
+    //eslint-disable-next-line
     const json = await response.json();
 
     for (let index = 0; index < notes.length; index++) {
@@ -82,9 +83,9 @@ const NoteState = (props) => {
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjM0MjY2MzUzMjEwMzEzMjQwYjNkMTE1In0sImlhdCI6MTY2NTMyNTE2MH0.lRh1wtC2EMNw_Xj1R3sbwYWxN2Hz6Xr_PL08sxQiYMU",
       },
     });
+    //eslint-disable-next-line
     const json = await response.json();
 
-    console.log("deleting" + id);
     const newNote = notes.filter((note) => {
       return note._id !== id;
     });
