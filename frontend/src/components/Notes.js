@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext , useEffect} from "react";
 import NoteContext from "../context/notes/noteContext";
 import { NoteItem } from "./NoteItem";
 
 export const Notes = () => {
   const context_notes = useContext(NoteContext);
-  const { notes, setNotes } = context_notes;
+  const { notes, setNotes, fetchNotes } = context_notes;
+  useEffect(() => {
+    
+    fetchNotes();
+  
+    
+  }, [])
+  
   return (
     <>
       <h2 className="my-3">Your Notes</h2>
