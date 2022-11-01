@@ -12,18 +12,19 @@ export const Notes = () => {
   }, []);
 
   const ref = useRef(null);
+  const refClose = useRef(null);
+
   const updateNote = (currentnote) => {
     ref.current.click();
-    setnote({etitle:currentnote.title,edescription:currentnote.description,etag:currentnote.tag})
+    setnote({id:currentnote._id, etitle:currentnote.title,edescription:currentnote.description,etag:currentnote.tag})
   };
 
   const { editNote } = useContext(NoteContext);
-  const [note, setnote] = useState({ etitle: "", edescription: "", etag: "" });
+  const [note, setnote] = useState({id:"", etitle: "", edescription: "", etag: "" });
 
   const handleClick = (e) => {
-    e.preventDefault();
-    console.log("editing",note)
-    editNote(note.etitle, note.edescription, note.etag);
+    editNote(note.id,note.etitle, note.edescription, note.etag);
+    refClose.current.click();
   };
   const onChange = (e) => {
     setnote({ ...note, [e.target.name]: e.target.value });
@@ -110,6 +111,7 @@ export const Notes = () => {
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
+                ref={refClose}
               >
                 Close
               </button>

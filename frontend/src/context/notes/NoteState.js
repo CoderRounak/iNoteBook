@@ -50,7 +50,7 @@ const NoteState = (props) => {
   const editNote = async (id, title, description, tag) => {
     // API CALL
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      method: "PUT", // *GET, POST, PUT, DELETE, etc.
 
       headers: {
         "Content-Type": "application/json",
@@ -62,15 +62,19 @@ const NoteState = (props) => {
 
     //eslint-disable-next-line
     const json = await response.json();
-
+    let newNotes=JSON.parse(JSON.stringify(notes))
     for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
-      if (element.id === id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
+      let element = newNotes[index];
+      
+      if (element._id === id) {
+        newNotes[index].title = title;
+        newNotes[index].description = description;
+        newNotes[index].tag = tag;
+        break;
       }
+      
     }
+    setNotes(newNotes);
   };
   const deleteNote = async (id) => {
     // API CALL
